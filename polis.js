@@ -482,7 +482,7 @@ function STBListCallBack(apiresp) {
     objToJson = apiresp;
 	var subflow = objToJson[0].Inputs.newTemp.Section.Inputs.Response;
 	
-	console.log("subflow :" + subflow)
+	console.log("stblist :" + JSON.stringify(subflow))
 
     return ({
         speech: "Which STB would you like to record on?",
@@ -752,7 +752,7 @@ function PgmSearch(apireq,callback) {
 	var args = {
 		"headers": headersInfo,
 		"json": {Flow: 'TroubleShooting Flows\\Test\\APIChatBot.xml',
-			 Request: {ThisValue: 'EnhProgramSearch', 
+			 Request: {ThisValue: 'AdvProgramSearch', 
 				   BotstrTitleValue:strProgram, 
 				   BotdtAirStartDateTime : strdate,
 				   BotstrGenreRootId : strGenre,
