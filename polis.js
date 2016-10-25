@@ -215,12 +215,12 @@ return( {
 				"type": "template",
 				"payload": {
 					"template_type": "button",
-					"text": "Here are the support options. Tap below.",
+					"text": "You may need some additional help. Tap one below.",
 					"buttons": [
 						{
 							"type":"web_url",
 							"url":"https://m.me/fios",
-							"title":"Messenger Chat with agent"
+							"title":"Chat with Agent "
 						},
 						{
 							"type": "phone_number",
