@@ -63,6 +63,9 @@ res.header("Access-Control-Allow-Headers", "X-Requested-With");
         case "upgradeDVR":
             res.json(upgradeDVR(req));
             break;
+	case "support":
+            res.json(support(req));
+            break;
          case "MainMenu":
             res.json(MainMenu());
             break;
@@ -159,33 +162,7 @@ res.header("Access-Control-Allow-Headers", "X-Requested-With");
 				
 			console.log(" Channel: " + req.body.result.parameters.Channel +" Programs: " + req.body.result.parameters.Programs +" SelectedSTB: " + req.body.result.parameters.SelectedSTB +" Duration: " + req.body.result.parameters.Duration +" FiosId: " + req.body.result.parameters.FiosId +" RegionId: " + req.body.result.parameters.RegionId +" STBModel: " + req.body.result.parameters.STBModel +" StationId: " + req.body.result.parameters.StationId +" date: " + req.body.result.parameters.date +" timeofpgm: " + req.body.result.parameters.timeofpgm );
 			DVRRecord(req, function (str) { res.json(DVRRecordCallback(str)); });
-			/*
-			var respstr = 'Your recording for "' + req.body.result.parameters.Programs +  '"  on ' + req.body.result.parameters.Channel  +' channel, has been scheduled at ' + req.body.result.parameters.timeofpgm + ' on ' + req.body.result.parameters.SelectedSTB + ' STB.';
-				res.json({
-				speech: respstr + " Would you like to see some other TV Recommendations for tonight?",
-				displayText: "TV Recommendations",
-				data: {
-					"facebook": {
-					"attachment": {
-					"type": "template",
-					"payload": {
-					"template_type": "button",
-					"text": respstr + " Would you like to see some other TV Recommendations for tonight?",
-					"buttons": [
-					{
-					"type": "postback",
-					"title": "Show Recommendations",
-					"payload": "Show Recommendations"
-					},
-					{
-					"type": "postback",
-					"title": "More Options",
-					"payload": "More Options"
-					}]}}}
-				},
-				source: "Verizon.js"
-				});*/
-		}  
+			}  
   
             break; 
         default:
@@ -215,6 +192,40 @@ return( {
 							"type": "postback",
 							"title": "More Options",
 							"payload": "More Options"
+						}
+					]
+				}
+			}
+		}
+	},
+	source: "Verizon.js"
+       }
+	);	
+
+}
+
+function support()
+{
+return( {
+	speech: "Here is your support details",
+	displayText: "Link Account",
+	data: {
+		"facebook": {
+			"attachment": {
+				"type": "template",
+				"payload": {
+					"template_type": "button",
+					"text": "Here are the support options. Tap below.",
+					"buttons": [
+						{
+							"type":"web_url",
+							"url":"https://m.me/fios",
+							"title":"Messenger Chat with agent"
+						},
+						{
+							"type": "phone_number",
+							"title": "Talk to an agent",
+							"payload": "+918554804789"
 						}
 					]
 				}
