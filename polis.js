@@ -537,15 +537,26 @@ function ChnlSearchCallback(apiresp) {
     var objToJson = {};
     objToJson = apiresp;
 	var chposition = objToJson[0].Inputs.newTemp.Section.Inputs.Response;
-	
 	console.log("chposition :" + chposition)
-    return ({
-        speech: "You can watch it on channel # " + chposition  ,
-        displayText: "You can watch it on channel # " + chposition  ,
-       // data: subflow,
-        source: "Verizon.js"
-    });
-
+	if(chposition != null)	
+	{
+	    return ({
+		speech: "You can watch it on channel # " + chposition  ,
+		displayText: "You can watch it on channel # " + chposition  ,
+	       // data: subflow,
+		source: "Verizon.js"
+	    });
+	}
+	else
+	{
+	 return ({
+		speech: "Sorry I don't find the channel. Can you search some other channel"  ,
+		displayText: "Sorry I don't find the channel. Can you search some other channel"  ,
+	       // data: subflow,
+		source: "Verizon.js"
+	    });
+	
+	}
 } 
 
 function DVRRecord(apireq,callback) { 
